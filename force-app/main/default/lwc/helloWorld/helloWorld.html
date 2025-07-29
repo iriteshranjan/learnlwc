@@ -1,3 +1,94 @@
 <template>
+
+     <lightning-card  title="Two Way data binding">
+         <div class="slds-var-m-around_medium">
+     <lightning-input type="text" label="enter the Title" onkeyup={getName}></lightning-input></div>
+    My name is {fullName} and title is {title} 
+        </lightning-card>
+
+
+
+        <!-- TRACK -->
+
+     <lightning-card  title="TRACK">
+         <div class="slds-var-m-around_medium">
+     <lightning-input type="text" label="enter the CITY" onkeyup={trackHandler}></lightning-input></div>
+        {adress.city} IS MY CITY
+         <lightning-input type="text" label="enter the without CITY" onkeyup={withoutTrackAddressHandler}></lightning-input></div>
+
+        {withoutTrackAddress.city} IS MY CITY without track.
+        </lightning-card>
+        <!-- Getters -->
+
+        <lightning-card title="Getters">
+            <div> Getters </div>
+            <div class="slds-var-m-around-medium">
+                <h1>{getNames}</h1>
+                <h1>{sum}</h1>
+               
+            </div>
+        </lightning-card>
+
+        <!-- if else directive -->
+
+        <lightning-card title="IF and ELSE">
+
+            <div class ="slds-var-m-around_medium">
+                <lightning-button label={check} onclick={conditionHandler}></lightning-button>
+                <template if:true={check}>
+                    <h1>hello if</h1>
+
+                </template>
+                <template if:false={check}>
+                    <h1> Hello Else</h1>
+                </template>
+            </div>
+        </lightning-card>
+
+        <lightning-card title="LWC IF and ELSE">
+
+            <div class ="slds-var-m-around_medium">
+                <lightning-button label={check} onclick={conditionHandler}></lightning-button>
+                <template lwc:if={check}>
+                    <h1>hello if</h1>
+
+                </template>
+                <template lwc:elseif={check}>
+                    <h1> Hello Else</h1>
+                </template>
+            </div>
+        </lightning-card>
+
+        <lightning-card title="LOOPS for loop">
+            <div class="slds-var-m-around_medium">
+                 <template for:each={num3} for:item="currentItem" for:index="index">
+                    <ul key={currentItem} class="slds-has-dividers_around-space">
+                      <li class="slds-item">  {currentItem}</li>
+                    </ul>
+                 </template>
+
+            </div>
+        </lightning-card>
+
+        <lightning-card title="iterator">
+            <template iterator:iteratorname={num33}>
+                <div key={iteratorname.value.id}>
+                <ul>
+                    
+                     {iteratorname.value.values}
+                </ul></div>
+            </template>
+        </lightning-card>
+
+        <lightning-card title="object looping">
+            <template for:each={num33} for:item="currentItem">
+                <ul key={currentItem.id}>
+                   <li>{currentItem.values}  {currentItem.id} </li> 
+
+                </ul>
+            </template>
+
+           
+        </lightning-card>
     
 </template>
