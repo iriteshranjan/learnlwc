@@ -11,6 +11,8 @@ export default class StockRealtimeLwc extends LightningElement {
     @track localStock;
     @track stockData;
     @track error;
+    
+
 
     connectedCallback() {
         getAllStocks()
@@ -62,4 +64,11 @@ export default class StockRealtimeLwc extends LightningElement {
                 this.error = 'Sync failed: ' + err.body?.message;
             });
     }
+    renderedCallback() {
+    const el = this.template.querySelector('.highlight-content');
+    if (el && this.localStock?.ATF__c) {
+        el.innerHTML = this.localStock.ATF__c;
+    }
+}
+
 }

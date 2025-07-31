@@ -8,7 +8,7 @@ public  without sharing class StockRealtimeController {
     @AuraEnabled(cacheable=true)
     public static Stock__c getStockById(Id stockId) {
         return [
-            SELECT Id, Name, slug__c, company__c, pricecurrent__c, Exchange__c, lastupd__c
+            SELECT Id, Name, slug__c, company__c, pricecurrent__c, Exchange__c, lastupd__c,ATF__c
             FROM Stock__c
             WHERE Id = :stockId
             LIMIT 1

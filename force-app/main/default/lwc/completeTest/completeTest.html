@@ -1,0 +1,27 @@
+<template>
+    <lightning-card label="practice All">
+        <div class="slds-var-m-around_medium">
+            <lightning-input label="enter text" onkeyup={testController}></lightning-input>
+            <h1>{testing.name}</h1>
+             <lightning-input label="enter text" onkeyup={testController1}></lightning-input>
+             <h1>{testing1.name}</h1>
+             
+        </div>
+        <lightning-button label="click me" onclick={booleanController}></lightning-button>
+        <template if:true={flag}>
+            <h1>hello true</h1>
+        </template>
+
+        <template for:each={forloop} for:item="currentItem">
+            <div key={currentItem.name}>
+                {currentItem.name} and {currentItem.title}
+            </div>
+        </template>
+        <h1>======</h1>
+        <template iterator:it={forloop} >
+           <div key={it.value.name}>
+            {it.value.name} and {it.value.title}</div>
+        </template>
+    </lightning-card>
+    
+</template>
