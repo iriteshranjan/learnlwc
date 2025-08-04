@@ -39,10 +39,10 @@ public  without sharing class StockRealtimeController {
             'company' => (String)data.get('company'),
             'pricecurrent' => (String)data.get('pricecurrent'),
             'exchange' => (String)data.get('exchange'),
-            'lastupd' => (String)data.get('lastupd') 
+            'lastupd' => (String)data.get('lastupd')
         };
     }
-  //test
+
     private static Map<String, Object> fetchFromAPI(String id, String exchange) {
         Http http = new Http();
         HttpRequest req = new HttpRequest();
