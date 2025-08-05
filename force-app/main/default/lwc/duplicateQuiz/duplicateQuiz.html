@@ -1,0 +1,24 @@
+<template>
+    <lightning-card lable="Duplicate Quiz">
+        <template for:each={questions} for:item=sawal>
+            <div key={sawal.id}>
+             <Strong> <h1>{sawal.id} => {sawal.Question}</h1></Strong> 
+                 <div class="slds-grid">
+                <input type="radio" name={sawal.id} value="a"  onchange={changeHandler}/>
+                <div class="slds-col"><span>{sawal.Option.a}</span></div>
+                <input type="radio" name={sawal.id} value="b"  onchange={changeHandler}/>
+                <div class="slds-col"><span>{sawal.Option.b}</span></div>
+                <input type="radio" name={sawal.id} value="c"  onchange={changeHandler}/>
+                <div class="slds-col"><span>{sawal.Option.c}</span></div>
+                </div>
+            </div>
+        </template>
+         <lightning-button variant="brand" type="submit" label="submit" onclick={submitHandler} class="slds-m-around_small" ></lightning-button>
+        <lightning-button variant="brand" type="reset" label="Reset" onclick={resetHandler} class="slds-m-around_small" ></lightning-button>
+
+        <template if:true={check} >
+            You have scored {correctanswers} out of {questions.length}
+        </template>
+    </lightning-card>
+    
+</template>
