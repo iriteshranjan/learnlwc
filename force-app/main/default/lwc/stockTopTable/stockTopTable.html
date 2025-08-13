@@ -1,0 +1,66 @@
+<template>
+    <lightning-card title="Market Movers" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <lightning-button variant="brand" label="Top Gainers" onclick={handleGainers} class="slds-m-right_small"></lightning-button>
+            <lightning-button variant="destructive" label="Top Losers" onclick={handleLosers} class="slds-m-right_small"></lightning-button>
+            <lightning-button label="Close the Tab" onclick={handleClose}></lightning-button>
+        </div>
+
+        <template if:true={marketData}>
+            <h2 class="slds-text-heading_medium slds-m-top_medium">{marketData.element_name}</h2>
+            <div class="market-tables">
+                <!-- NSE Table -->
+                <div class="market-table">
+                    <h3>NSE</h3>
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Value</th>
+                                <th>Change</th>
+                                <th>%Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={marketData.nse.data} for:item="item">
+                                <tr key={item.sc_comp}>
+                                  <td><strong>{item.sc_comp</strong> </td>
+                                    <td>{item.close}</td>
+                                    <td>{item.change}</td>
+                                    <td>{item.percentChange}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                    <p class="slds-text-title_small">Last Updated: {marketData.nse.lastUpdatedDate}</p>
+                </div>
+
+                <!-- BSE Table -->
+                <div class="market-table">
+                    <h3>BSE</h3>
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Value</th>
+                                <th>Change</th>
+                                <th>%Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={marketData.bse.data} for:item="item">
+                                <tr key={item.sc_comp}>
+                                    <td><strong>{item.sc_comp}</strong></td>
+                                    <td>{item.close}</td>
+                                    <td>{item.change}</td>
+                                    <td>{item.percentChange}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                    <p class="slds-text-title_small">Last Updated: {marketData.bse.lastUpdatedDate}</p>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>
