@@ -1,24 +1,24 @@
 <template>
-    <lightning-card title="Stock Viewer">
-        <div class="slds-m-around_medium">
+    <lightning-card title="📈 Search for the Stocks You Like">
+        <div class="slds-p-around_medium">
 
-            <!-- Searchable Input -->
+            <!-- Search Input -->
             <lightning-input
                 type="search"
-                label="Search Stock"
+                variant="label-hidden"
+                placeholder="Type stock name..."
                 value={searchKey}
                 onchange={handleSearchChange}
-                placeholder="Type stock name...">
+                class="search-box">
             </lightning-input>
 
-            <!-- Filtered Dropdown -->
+            <!-- Search Results -->
             <template if:true={filteredStocks}>
-                <ul class="slds-listbox slds-listbox_vertical slds-scrollable" role="listbox" style="border: 1px solid #ccc; max-height: 200px;">
+                <ul class="slds-listbox slds-listbox_vertical slds-scrollable search-results" role="listbox">
                     <template for:each={filteredStocks} for:item="stock">
-                        <li key={stock.value} class="slds-listbox__item" role="presentation">
+                        <li key={stock.value} class="slds-listbox__item">
                             <div
                                 class="slds-listbox__option slds-listbox__option_plain slds-media"
-                                role="option"
                                 data-id={stock.value}
                                 onclick={handleSelectStock}>
                                 <span class="slds-media__body">{stock.label}</span>
@@ -28,38 +28,62 @@
                 </ul>
             </template>
 
-            <!-- Show Stock Data -->
+            <!-- Stock Details -->
             <template if:true={localStock}>
-                <div class="slds-m-top_medium">
-                    <p><b><u>Offline Data (Salesforce):</u></b></p>
-                    <p><b>Stock Name:</b> {localStock.Name}</p>
-                    <p><b>Price:</b> {localStock.pricecurrent__c}</p>
-                    <p><b>Exchange:</b> {localStock.exchange__c}</p>
-                    <p><b>Last Updated:</b> {localStock.lastupd__c}</p>
-                    <p><b>Today Highlights</b> <span lwc:dom="manual" class="highlight-content"></span></p>
-                    <lightning-button
-                        class="slds-m-top_small"
-                        label="Sync Now"
-                        variant="brand"
-                        onclick={handleSync}>
-                    </lightning-button>
+                <div class="stock-card">
+                    <div class="stock-header">
+                        <h2>{localStock.Name}</h2>
+                        <p class="exchange">{exchangeFull}</p>
+                    </div>
+                    <div class="stock-price">
+                        <span class={priceClass}>{formattedPrice}</span>
+                        <span class="price-change">
+                         <lightning-icon icon-name={arrowIcon}
+                            size="small"
+                                alternative-text="Change"
+                                    class={arrowClass}>
+                         </lightning-icon>
+                                {localStock.pricepercentchange__c}%
+                        </span>
+
+                    </div>
+                    <div class="stock-meta">
+                        <p><b>52W High:</b> {formattedHigh}</p>
+                        <p><b>52W Low:</b> {formattedLow}</p>
+                        <p><b>Volume:</b> {localStock.VOL__c}</p>
+                        <p><b>Last Updated:</b> {localStock.lastupd__c}</p>
+                    </div>
+
+                    <!-- ATF Description -->
+                    <div class="today-highlight" lwc:dom="manual"></div>
+
+                    <!-- Sync Now only if allowed -->
+                    <template if:true={isSyncAllowed}>
+                        <lightning-button
+                            label="🔄 Sync Now"
+                            variant="brand"
+                            class="slds-m-top_small"
+                            onclick={handleSync}>
+                        </lightning-button>
+                    </template>
                 </div>
             </template>
 
+            <!-- Real-time Data -->
             <template if:true={stockData}>
-                <div class="slds-m-top_medium">
-                    <p><b><u>Real-time Synced Data:</u></b></p>
+                <div class="realtime-card">
+                    <h3>Real-time Synced Data</h3>
                     <p><b>Company:</b> {stockData.company}</p>
-                    <p><b>Price:</b> {stockData.pricecurrent}</p>
+                    <p><b>Price:</b> ₹{stockData.pricecurrent}</p>
                     <p><b>Exchange:</b> {stockData.exchange}</p>
                     <p><b>Last Updated:</b> {stockData.lastupd}</p>
+                     
                 </div>
             </template>
 
+            <!-- Error -->
             <template if:true={error}>
-                <div class="slds-m-top_medium slds-text-color_error">
-                    {error}
-                </div>
+                <div class="slds-text-color_error">{error}</div>
             </template>
         </div>
     </lightning-card>

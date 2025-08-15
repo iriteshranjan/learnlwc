@@ -8,7 +8,7 @@
 
 .ticker-track {
     display: inline-flex;
-    animation: tickerMove 8s linear infinite;
+    animation: tickerMove 18s linear infinite;
 }
 
 .ticker-item {

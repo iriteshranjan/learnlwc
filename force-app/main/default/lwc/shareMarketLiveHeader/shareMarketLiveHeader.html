@@ -1,9 +1,15 @@
 <template>
     <div class="header-container">
         <div class="header-glow">
-            <span class="glow-dot"></span>
-            <span class="header-text">📈 Indian Share Market Live</span>
+            <span class="glow-dot" style={dotStyle}></span>
+            <div class="header-text-container">
+                <span class="header-text">📈 Indian Share Market</span>
+                <div class="market-status" style={statusStyle}>{marketStatus}</div>
+            </div>
             <span class="bull-icon">🐂</span>
         </div>
+
+        <!-- Date & time OUTSIDE glow box -->
+        <div class="date-time">{currentTime}</div>
     </div>
 </template>

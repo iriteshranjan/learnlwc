@@ -5,6 +5,12 @@ export default class StockTopTable extends LightningElement {
     @track marketData;
     marketType = 'gainers'; // default
 
+        connectedCallback() {
+        // Load default Top Gainers when component loads
+        this.fetchMarketData('gainers', 10);
+    }
+
+
     handleGainers() {
         this.fetchMarketData('gainers', 10);
     }
