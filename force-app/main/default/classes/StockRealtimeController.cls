@@ -1,14 +1,20 @@
-public  without sharing class StockRealtimeController {
+public without sharing class StockRealtimeController {
     
     @AuraEnabled(cacheable=true)
     public static List<Stock__c> getAllStocks() {
-        return [SELECT Id, Name,pricecurrent__c FROM Stock__c LIMIT 7000];
+        return [
+            SELECT Id, Name, pricecurrent__c, Exchange__c, 
+                   pricepercentchange__c, X52H__c, X52L__c, VOL__c, ATF__c
+            FROM Stock__c where VOL__c>9000
+            LIMIT 7000 
+        ];
     }
 
     @AuraEnabled(cacheable=true)
     public static Stock__c getStockById(Id stockId) {
         return [
-            SELECT Id, Name, slug__c, company__c, pricecurrent__c, Exchange__c, lastupd__c,ATF__c
+            SELECT Id, Name, slug__c, company__c, pricecurrent__c, Exchange__c, 
+                   lastupd__c, ATF__c, pricepercentchange__c, X52H__c, X52L__c, VOL__c
             FROM Stock__c
             WHERE Id = :stockId
             LIMIT 1
@@ -17,15 +23,26 @@ public  without sharing class StockRealtimeController {
 
     @AuraEnabled
     public static Map<String, String> fetchAndUpdateStockData(Id stockId) {
-        Stock__c stock = [SELECT Id, slug__c, company__c FROM Stock__c WHERE Id = :stockId LIMIT 1];
-        List<Company__c> companies = [SELECT Id, moneycontrolCompanyId__c FROM Company__c WHERE slug__c = :stock.slug__c LIMIT 1];
+        Stock__c stock = [
+            SELECT Id, slug__c, company__c 
+            FROM Stock__c 
+            WHERE Id = :stockId 
+            LIMIT 1
+        ];
+
+        List<Company__c> companies = [
+            SELECT Id, moneycontrolCompanyId__c 
+            FROM Company__c 
+            WHERE slug__c = :stock.slug__c 
+            LIMIT 1
+        ];
         if (companies.isEmpty()) throw new AuraHandledException('No Company found.');
 
         String moneyId = companies[0].moneycontrolCompanyId__c;
         Map<String, Object> data = fetchFromAPI(moneyId, 'nse');
 
         if (String.isEmpty((String)data.get('pricecurrent'))) {
-            data = fetchFromAPI(moneyId, 'bse');
+            data = fetchFromAPI(moneyId, 'nse');
         }
 
         if (!String.isEmpty((String)data.get('pricecurrent'))) {

@@ -64,31 +64,47 @@ public class StockCompanyService {
             return;
         }
 
-        // Step 1: Query existing companies using moneycontrolCompanyCode__c
+        // Step 1: Prepare filters and deduplicate records using moneycontrolCompanyId
         Set<String> codes = new Set<String>();
+        Set<String> ids = new Set<String>();
+        Map<String, CompanyRecord> uniqueById = new Map<String, CompanyRecord>();
+
         for (CompanyRecord comp : allApiRecords) {
             if (comp.moneycontrolCompanyCode != null) {
                 codes.add(comp.moneycontrolCompanyCode);
             }
+            if (comp.moneycontrolCompanyId != null && !uniqueById.containsKey(comp.moneycontrolCompanyId)) {
+                uniqueById.put(comp.moneycontrolCompanyId, comp);
+                ids.add(comp.moneycontrolCompanyId);
+            }
         }
 
+        // Step 2: Query existing companies
         Map<String, company__c> existingMap = new Map<String, company__c>();
+        Map<String, company__c> existingIdMap = new Map<String, company__c>();
         for (company__c existing : [
             SELECT Id, Name, companyShortName__c, exchangeSymbol__c, isInCode__c, industryName__c,
                    sector__c, Series__c, Slug__c, moneycontrolCompanyCode__c, dionCompanyCode__c,
                    exchangeId__c, moneycontrolCompanyId__c
             FROM company__c
-            WHERE moneycontrolCompanyCode__c IN :codes
+            WHERE moneycontrolCompanyCode__c IN :codes OR moneycontrolCompanyId__c IN :ids
         ]) {
-            existingMap.put(existing.moneycontrolCompanyCode__c, existing);
+            if (existing.moneycontrolCompanyCode__c != null) {
+                existingMap.put(existing.moneycontrolCompanyCode__c, existing);
+            }
+            if (existing.moneycontrolCompanyId__c != null) {
+                existingIdMap.put(existing.moneycontrolCompanyId__c, existing);
+            }
         }
 
-        // Step 2: Prepare inserts and updates
+        // Step 3: Prepare inserts and updates
         List<company__c> toInsert = new List<company__c>();
         List<company__c> toUpdate = new List<company__c>();
 
-        for (CompanyRecord comp : allApiRecords) {
-            company__c existing = existingMap.get(comp.moneycontrolCompanyCode);
+        for (CompanyRecord comp : uniqueById.values()) {
+            if (String.isBlank(comp.moneycontrolCompanyId)) continue;
+
+            company__c existing = existingIdMap.get(comp.moneycontrolCompanyId);
 
             company__c record = new company__c();
             record.Name = comp.companyName;
@@ -112,7 +128,7 @@ public class StockCompanyService {
             }
         }
 
-        // Step 3: Perform DML
+        // Step 4: Perform DML
         if (!toInsert.isEmpty()) {
             insert toInsert;
             System.debug('✅ Inserted ' + toInsert.size() + ' new companies.');
