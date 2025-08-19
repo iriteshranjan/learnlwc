@@ -78,8 +78,8 @@ export default class StockRealtimeLwc extends LightningElement {
     get isSyncAllowed() {
         const now = new Date();
         const hoursIST = (now.getUTCHours() + 5 + Math.floor((now.getUTCMinutes() + 30) / 60)) % 24;
-        return hoursIST >= 9 && hoursIST < 24;
-       return true
+       // return hoursIST >= 9 && hoursIST < 24;
+       return false
     }
 
     get exchangeFull() {
