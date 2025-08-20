@@ -1,0 +1,19 @@
+<template>
+    
+    <lightning-card title="Quiz">
+        <template for:each={myQuestions} for:item=questions>
+            <div key={questions.id}>
+                <strong>{questions.id}==>{questions.Question}</strong>
+                <div class="slds-grid">
+                <input type="radio" name={questions.id} value="a" onchange={changeHandler} />
+                <div class="slds-col"><span>{questions.options.a}</span></div>
+                                <input type="radio" name={questions.id} value="b" onchange={changeHandler} />
+                <div class="slds-col"><span>{questions.options.b}</span></div>
+                                <input type="radio" name={questions.id} value="c" onchange={changeHandler} />
+                <div class="slds-col"><span>{questions.options.c}</span></div>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+    
+</template>
