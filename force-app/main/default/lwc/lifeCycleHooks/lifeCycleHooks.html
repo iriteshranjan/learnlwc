@@ -1,6 +1,14 @@
 <template>
     <lightning-card title="LifeCycle Hook Parent">
-        <c-life-cycle-hooks-child></c-life-cycle-hooks-child>
+        <template if:true={flag}>
+        <lightning-button variant="brand" label="Remove child" title="show call" type="submit" onclick={changeHandler}></lightning-button>
+            <c-life-cycle-hooks-child></c-life-cycle-hooks-child></template>
+
+            <template if:false={flag}>
+        <lightning-button variant="brand" label="Show child" title="Remove call" type="submit" onclick={changeHandler}></lightning-button>
+           </template>
+
+
     </lightning-card>
     
     

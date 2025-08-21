@@ -12,11 +12,16 @@ export default class LifeCycleHooks extends LightningElement {
     }
     connectedCallback()
     {
- console.log("I am child connectedCallback");
+        console.log("I am child connectedCallback");
+        throw new Error ('Loading of child component Failed');
     }
 
     renderedCallback()
     {
         console.log("I am child renderedCallback");
+    }
+    disconnectedCallback()
+    {
+       alert('Child is removed');
     }
 }

@@ -19,4 +19,16 @@ export default class LifeCycleHooks extends LightningElement {
     {
         console.log("I am Parent renderedCallback");
     }
+    flag=true;
+    changeHandler(event)
+    {
+        this.flag=!this.flag
+       
+    }
+
+    errorCallback(error,stack)
+    {
+        console.log(error.message)
+    }
+    
 }
