@@ -23,6 +23,9 @@ export default class HelloQuerySelectorDemo extends LightningElement {
         console.log(item.innerText)
         item.setAttribute("title",item.innerText)
 
+        const childrenElement=this.template.querySelector('.children');
+        childrenElement.innerHTML='<p style="color:red;">I am children</p>'
+
       
        })
 
