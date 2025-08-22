@@ -40,7 +40,11 @@ progressHandler(event)
 {
 this.progress=event.target.value
 }
+reset
+resetHandler(event)
+{
+    this.template.querySelector('c-silder-component').resetSlider()
 
 }
-
+}
 

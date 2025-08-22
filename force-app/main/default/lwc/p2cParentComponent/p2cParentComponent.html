@@ -12,7 +12,16 @@
     </div>
 
     <!-- progress bar -->
-      <div class="slds-car-m-bottom_medium"></div>
+      
      <lightning-input type="number" label="Enter progress" onkeyup={progressHandler}></lightning-input>
+     <div class="slds-car-m-bottom_medium">
      <c-progress-bar progress-bars={progress}></c-progress-bar>
+    <div class="slds-var-m-around_medium">
+
+        <lightning-button variant="brand" label="reset" title="reset" onclick={resetHandler}></lightning-button>
+
+        <c-silder-component></c-silder-component>
+    </div>
+    </div>
+
 </template>
