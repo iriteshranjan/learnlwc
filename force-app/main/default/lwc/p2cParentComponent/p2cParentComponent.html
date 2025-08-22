@@ -1,0 +1,18 @@
+<template>
+
+    <lightning-card title="parent component">
+
+        <lightning-input type="text"  label="Enter to pass to child"  onkeyup={childHandler}></lightning-input>
+        <lightning-button variant="brand" label="set Flag" onclick={flagHandler}></lightning-button>
+            {allData}
+            <c-p2c-alert-component message={childmessage} card-heading={childmessage} flag={flags}></c-p2c-alert-component>
+    </lightning-card>
+    <div class="slds-car-m-bottom_medium">
+        <c-p2c-carousel-component carousel-data={carouselData}></c-p2c-carousel-component>
+    </div>
+
+    <!-- progress bar -->
+      <div class="slds-car-m-bottom_medium"></div>
+     <lightning-input type="number" label="Enter progress" onkeyup={progressHandler}></lightning-input>
+     <c-progress-bar progress-bars={progress}></c-progress-bar>
+</template>
