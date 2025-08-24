@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="FORM to FILL">
+        <div class="slds-m-around_medium">
+           <div class="slds-m-aroun_medium"> {msg} </div>
+            <lightning-button variant="brand" label="Submit" title="Submit" onclick={formHandler}></lightning-button>
+            <template if:true={flag}>
+                <c-child-lwc-modal oncancel={cancelHandler} onsave={saveHandler}></c-child-lwc-modal>
+            </template>
+        </div>
+    </lightning-card>
+
+</template>
