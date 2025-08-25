@@ -8,4 +8,29 @@
             </lightning-record-form>
         </div>
     </lightning-card>
+
+     <template if:true={flag}>
+     <lightning-card title="Lightning Record Display">
+       
+        <lightning-record-form 
+        record-id={recordidd}
+        object-api-name={objectName}
+        fields={fieldList}
+         mode="edit"
+         columns="2">
+        </lightning-record-form>
+     </lightning-card></template>
+
+     
+    
+     <lightning-card title="Lightning Record Display layout">
+       
+        <lightning-record-form 
+        record-id={recordidd}
+        object-api-name={objectName}
+        layout-type="Compact"
+         mode="edit"
+         columns="2">
+        </lightning-record-form>
+     </lightning-card>
 </template>
