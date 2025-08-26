@@ -1,4 +1,4 @@
-import { LightningElement,wire } from 'lwc';
+import { LightningElement,wire,track } from 'lwc';
 import PRACTICEMC from '@salesforce/messageChannel/LmsPractice__c';
 import { APPLICATION_SCOPE,subscribe,MessageContext } from 'lightning/messageService';
 
@@ -18,9 +18,10 @@ export default class PracticeLmsB extends LightningElement {
         
 
     }
-   handleMessage(message)
-   {
-    this.outputMessage=message.lmsdata.value
-   }
+   handleMessage(message) {
+    const val = message.lmsdata.value;
+     this.outputMessage = val.name;
+    this.outputMessage2=val.test;
+}
 
 }
