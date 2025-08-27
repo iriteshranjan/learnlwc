@@ -1,0 +1,20 @@
+<template>
+
+    <lightning-card title="Practice LWC and APEX">
+        <div class="slds-m-around_medium">
+            <template for:each={accounts} for:item=acct>
+                <div class="slds-box slds-box_xx-small" key={acct.accountId}>
+                    <Strong> Account Name: {acct.accountName}</Strong>
+                    <template for:each={acct.contacts} for:item=con>
+                         <div class="slds-box slds-box_xx-small" key={con.contactId}>
+                                <Strong> Contact Name: {con.contactName}</Strong>
+                         </div>
+                    </template>
+
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+    
+</template>
