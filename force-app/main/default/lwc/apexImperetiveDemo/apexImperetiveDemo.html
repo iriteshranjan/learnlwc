@@ -1,0 +1,33 @@
+<template>
+ 
+    <lightning-card title="Reactive">
+        <template if:true={accounts}>
+            <template for:each={accounts} for:item=acc>
+                <div class="slds-box slds-box_xx-small" key={acc.accountName}>
+                    <strong> Name: {acc.accountName}</strong>
+                    <template for:each={acc.contacts} for:item=con>
+                         <div class="slds-box slds-box_xx-small" key={con.contactName}>
+                         <strong> Name: {con.contactName}</strong></div>
+                    </template>
+                </div>
+            </template>
+        </template>
+        
+    </lightning-card>
+        <lightning-card title="Imperetive">
+
+            <lightning-button variant="brand" title="Imperetive" label="Imperetive Data" onclick={imHandler} ></lightning-button>
+            <template if:true={accountIm}>
+                <template for:each={accountIm} for:item=acc>
+                    <div class="slds-box slds-box_xx-small" key={acc.accountName}>
+                        <strong> AccountName:{acc.accountName}</strong>
+                        <template for:each={acc.contacts} for:item=con>
+                         <div class="slds-box slds-box_xx-small" key={con.contactName}>
+                            <Strong>contactName: {con.contactName}</Strong></div>
+
+                        </template>
+                    </div>
+                </template>
+            </template>
+    </lightning-card>
+</template>
