@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="My Resume" icon-name="doctype:pdf">
+        <div class="slds-m-around_medium">
+            <iframe 
+                src={pdfUrl} 
+                width="100%" 
+                height="800px" 
+                style="border:none;">
+            </iframe>
+        </div>
+        <div class="slds-m-around_medium">
+            <a href={pdfUrl} download>
+                <lightning-button label="Download Resume" variant="brand"></lightning-button>
+            </a>
+        </div>
+    </lightning-card>
+</template>

@@ -13,6 +13,15 @@ public with sharing class AccountController {
 
     }
 
+    @AuraEnabled(Cacheable=false)
+    public static List<Account> findAccounts(String searchkey)
+    {
+      String key='%'+searchkey+'%';
+      return [Select Id,Name  from Account WHERE Name like :key limit 5];
+
+    }
+
+
 
 
     

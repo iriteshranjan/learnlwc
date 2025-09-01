@@ -1,0 +1,22 @@
+<template>
+
+    <lightning-card title="APEX with PARAMS IMPERETIVE">
+        <div class="slds-m-around_margin">
+        <lightning-input type="search" label="Enter Search Key" title="Enter Search Key" onchange={inputHandler}></lightning-input>
+        <!-- <lightning-button variant="brand" label="Submit" onclick={submitHandler}></lightning-button> -->
+
+        
+            <template for:each={account} for:item=acc>
+                <div class="slds-box slds-box__xx-small" key={acc.accountName}>
+                    <Strong> Account Name: {acc.accountName}</Strong>
+
+                </div>
+            </template>
+        
+
+
+
+        </div>
+    </lightning-card>
+    
+</template>
