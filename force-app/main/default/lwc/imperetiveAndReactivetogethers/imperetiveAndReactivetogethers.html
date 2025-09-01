@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Practice Imperetive and Reactive">
+        <div class="slds-m-around-medium">
+        <template for:each={updateString} for:item=names>
+            <div class="slds-box slds-box_xx-small" key={names.Id}>
+                <strong>{names.Id} => {names.Name}==> {names.newValue}</strong>
+            </div>
+        </template></div>
+    </lightning-card>
+
+    <Strong> Reactive Card</Strong>
+
+    <lightning-card title="Doing the same with Imperetive">
+        <lightning-button variant="brand" title="clickME" label="clickME" onclick={imperetiveController}></lightning-button>
+          <div class="slds-m-around-medium">
+        <template for:each={updateData} for:item=names>
+            <div class="slds-box slds-box_xx-small" key={names.Id}>
+                <strong>{names.Id} => {names.Name}==> {names.newValue}</strong>
+            </div>
+        </template></div>
+    </lightning-card>
+    
+</template>
