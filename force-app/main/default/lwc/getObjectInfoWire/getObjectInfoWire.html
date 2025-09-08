@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="GET OBJECT INFO WIRE ">
+        <div class="slds-m-around-medium">
+           <template if:true={getDefaultRecordTypeId}>
+            <div class="slds-box slds-box_xx-small">
+                <Strong>Default Record Type for {name} is {getDefaultRecordTypeId}</Strong>
+            </div>
+           </template>
+        </div>
+    </lightning-card>
+
+    <lightning-card title="getObjectInfos">
+        <div class="slds-m-around_medium">
+            <template if:true={getObjectApi}>
+                <template for:each={getObjectApi.results} for:item=objectApiNames>
+                    <div class="slds-box slds-bos_xx-small" key={objectApiNames.result}>
+                        <strong>Object Name.       : {objectApiNames.result.apiName}</strong><br/>
+                        <strong>Default Record Type: {objectApiNames.result.defaultRecordTypeId}</strong>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>
