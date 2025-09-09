@@ -3,6 +3,7 @@ import getTopMarketData from '@salesforce/apex/StockTopWrapper.getTopMarketData'
 
 export default class StockTopTable extends LightningElement {
     @track marketData;
+    dividentCalled=false
     marketType = 'gainers'; // default
 
         connectedCallback() {
@@ -12,13 +13,21 @@ export default class StockTopTable extends LightningElement {
 
 
     handleGainers() {
+        this.dividentCalled=false;
         this.fetchMarketData('gainers', 10);
     }
 
+    dividendController(event)
+    {
+        this.dividentCalled=!this.dividentCalled
+    }
+
     handleLosers() {
+         this.dividentCalled=false;
         this.fetchMarketData('losers', 10);
     }
     handleClose() {
+         this.dividentCalled=false;
     this.marketData = null;
 }
 

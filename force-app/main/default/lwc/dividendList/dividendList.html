@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Upcoming Dividends">
+        <div class="slds-m-around_medium">
+            <template if:true={displayedDividends}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={displayedDividends}
+                    columns={columns}
+                    hide-checkbox-column="true"
+                     >
+                </lightning-datatable>
+            </template>
+
+            <template if:false={displayedDividends}>
+                <p>No records found.</p>
+            </template>
+
+            <div class="slds-m-top_medium slds-align_absolute-center">
+                <lightning-button
+                    label="Previous"
+                    onclick={handlePrev}
+                    disabled={disablePrev}>
+                </lightning-button>
+                <span class="slds-m-horizontal_medium">{pageInfo}</span>
+                <lightning-button
+                    label="Next"
+                    onclick={handleNext}
+                    disabled={disableNext}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>
