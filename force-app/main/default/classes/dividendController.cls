@@ -67,7 +67,7 @@ insert div;
     @AuraEnabled(cacheable=true)
   public static List<Dividend__c>dividendLwcController()
   {
-      return [select Id,Name,stockName__c,dividend__c,exDate__c,lastValue__c,announcementDate__c from Dividend__c where exDate__c>=Today order by exDate__c  ];
+      return [select Id,Name,stockName__c,dividend__c,exDate__c,lastValue__c,announcementDate__c from Dividend__c where exDate__c>=Today and ex__c!='B' order by exDate__c  ];
   }
 
     
