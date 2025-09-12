@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="📊 Live Market Indexes (Real-Time)" icon-name="custom:custom63">
+        <div class="ticker">
+            <div class="ticker-track">
+                <template for:each={indexes} for:item="idx">
+                    <div key={idx.Id} class="ticker-item">
+                        <span class="name">{idx.Name}</span>
+                        <span class="price">{idx.lastprice__c}</span>
+                        <span class={idx.changeClass}>
+                            <lightning-icon icon-name={idx.arrowIcon} size="x-small"></lightning-icon>
+                            {idx.change__c}
+                        </span>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>
