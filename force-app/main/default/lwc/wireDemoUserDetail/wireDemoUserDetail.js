@@ -4,7 +4,7 @@ import {getRecord} from 'lightning/uiRecordApi';
 import NAME_FIELD from '@salesforce/schema/User.Name';
 import EMAIL_FIELD from '@salesforce/schema/User.Email';
 const fields=[NAME_FIELD,EMAIL_FIELD]
-export default class WireDemoUserDetail extends LightningElement {
+export default class WireDemoUserDetail extends LightningElement { 
 userId=Id
 //005IS000000XekdYAC
 //@wire(adapter,{adapterConfig})

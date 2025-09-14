@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="WIRE ACCOUNT VIEWER">
+        <div class="slds-m-around-medium">
+            <template if:true={accountDetail}>
+                <div class="slds-box slds-box_xx-small">
+                    <Strong>Name       :</Strong>{accountDetail.Name.value} <br />
+                    <Strong>Description:</Strong>{accountDetail.Description.value}
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
