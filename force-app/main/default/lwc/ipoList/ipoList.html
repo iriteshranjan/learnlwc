@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Upcoming IPO">
+        <div class="slds-m-around-medium">
+           <template for:each={open.ipoList} for:item=openIpo>
+            <div class="slds-box slds-box_xx-small" key={openIpo}>
+                <img src={openIpo.logoUrl} alt={openIpo.companyName} class="ipo-logo" />
+                <Strong> {openIpo.companyName}</Strong>
+                <template for:each={openIpo.categories} for:item=categories>
+                 <div class="slds-box slds-box_xx-small" key={categories}>
+                    
+                                 <Strong> {categories.category}</Strong>
+                                 </div>
+                                 </template>
+
+            </div>
+           </template>
+        </div>
+    </lightning-card>
+</template>

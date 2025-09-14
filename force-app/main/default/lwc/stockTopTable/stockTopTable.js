@@ -11,6 +11,11 @@ export default class StockTopTable extends LightningElement {
         this.fetchMarketData('gainers', 10);
     }
 
+    ipoController(event)
+    {
+        alert('This feature is under construction');
+    }
+
 
     handleGainers() {
         this.dividentCalled=false;
