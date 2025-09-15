@@ -1,5 +1,6 @@
 <template>
     <lightning-card title="📊 Live Market Indexes (Real-Time)" icon-name="custom:custom63">
+        <!-- 🔄 Scrolling ticker (unchanged) -->
         <div class="ticker">
             <div class="ticker-track">
                 <template for:each={indexes} for:item="idx">
@@ -13,6 +14,35 @@
                     </div>
                 </template>
             </div>
+        </div>
+
+        <!-- 🌟 Beautiful Highlight Cards -->
+        <div class="market-highlights">
+            <template if:true={nifty50}>
+                <div class="highlight-card">
+                    <div class="highlight-header">NIFTY 50</div>
+                    <div class="highlight-body">
+                        <span class="highlight-price">{nifty50.lastprice__c}</span>
+                        <span class={nifty50.changeClass}>
+                            <lightning-icon icon-name={nifty50.arrowIcon} size="small"></lightning-icon>
+                            {nifty50.change__c}
+                        </span>
+                    </div>
+                </div>
+            </template>
+
+            <template if:true={sensex}>
+                <div class="highlight-card">
+                    <div class="highlight-header">SENSEX</div>
+                    <div class="highlight-body">
+                        <span class="highlight-price">{sensex.lastprice__c}</span>
+                        <span class={sensex.changeClass}>
+                            <lightning-icon icon-name={sensex.arrowIcon} size="small"></lightning-icon>
+                            {sensex.change__c}
+                        </span>
+                    </div>
+                </div>
+            </template>
         </div>
     </lightning-card>
 </template>

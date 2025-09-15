@@ -2,11 +2,13 @@ import { LightningElement, track } from 'lwc';
 
 export default class IndexesLiveTest extends LightningElement {
     @track indexes = [];
+    @track nifty50;
+    @track sensex;
     refreshInterval;
 
     connectedCallback() {
-        this.fetchIndexes(); // Initial load
-        this.refreshInterval = setInterval(() => this.fetchIndexes(), 10000); // Auto-refresh
+        this.fetchIndexes();
+        this.refreshInterval = setInterval(() => this.fetchIndexes(), 10000);
     }
 
     disconnectedCallback() {
@@ -21,11 +23,15 @@ export default class IndexesLiveTest extends LightningElement {
             }
 
             const jsonResponse = await response.json();
-            console.log('✅ Indexes updated', jsonResponse);
-
-            // ✅ Correctly extract the indices array
+             console.log('✅ Indexes updated', jsonResponse);
             const indices = jsonResponse?.list?.indices || [];
-            this.indexes = this.formatData(indices);
+
+            const formatted = this.formatData(indices);
+            this.indexes = formatted;
+
+            // ✅ Pick Nifty50 and Sensex explicitly
+            this.nifty50 = formatted.find(item => item.Name.toLowerCase().includes('nifty 50'));
+            this.sensex = formatted.find(item => item.Name.toLowerCase().includes('sensex'));
         } catch (error) {
             console.error('❌ Error fetching indexes:', error);
         }
