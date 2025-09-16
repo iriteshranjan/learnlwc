@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="IPO">
+        <div class="slds-m-around-medium">
+        <lightning-button variant="brand" title="Open IPO" label="OPEN IPO" onclick={openHandler}></lightning-button>
+         <lightning-button variant="brand" title="Closed IPO" label="Closed IPO" onclick={closeHandler}></lightning-button>
+        <lightning-button variant="brand" title="Upcoming IPO" label="Upcoming IPO" onclick={upcomingHandler}></lightning-button>
+       <template if:true={results}>
+        <template for:each={results} for:item=result>
+            <div class="slds-box slds-box_xx-small" key={result.symbol}>
+                <Strong> Stock ID:</Strong> {result.symbol}<br/>
+                 <img src={result.logoUrl} alt="Company Logo" style="max-height:50px;"/><br/>
+                <Strong> Company Name:</Strong> {result.companyName}
+                <template for:each={result.categories} for:item=catt>
+                   <div class="slds-box slds-box_xx-small" key={catt}>
+                   <Strong>Category: {catt.category}</Strong></div>  
+                </template>
+
+            </div>
+        </template>
+        </template>
+        <template if:true={resultsClosed}>
+        <template for:each={resultsClosed} for:item="close">
+            <div class="slds-box slds-box_xx-small" key={close.companyName}>
+                <Strong>Company Name:</Strong>{close.companyName}
+            </div>
+        </template>
+
+        </template>
+
+        </div>
+    </lightning-card>
+    
+</template>
