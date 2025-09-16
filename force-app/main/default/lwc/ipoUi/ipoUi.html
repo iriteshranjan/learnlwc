@@ -1,33 +1,61 @@
 <template>
-    <lightning-card title="IPO">
-        <div class="slds-m-around-medium">
-        <lightning-button variant="brand" title="Open IPO" label="OPEN IPO" onclick={openHandler}></lightning-button>
-         <lightning-button variant="brand" title="Closed IPO" label="Closed IPO" onclick={closeHandler}></lightning-button>
-        <lightning-button variant="brand" title="Upcoming IPO" label="Upcoming IPO" onclick={upcomingHandler}></lightning-button>
-       <template if:true={results}>
-        <template for:each={results} for:item=result>
-            <div class="slds-box slds-box_xx-small" key={result.symbol}>
-                <Strong> Stock ID:</Strong> {result.symbol}<br/>
-                 <img src={result.logoUrl} alt="Company Logo" style="max-height:50px;"/><br/>
-                <Strong> Company Name:</Strong> {result.companyName}
-                <template for:each={result.categories} for:item=catt>
-                   <div class="slds-box slds-box_xx-small" key={catt}>
-                   <Strong>Category: {catt.category}</Strong></div>  
-                </template>
+    <lightning-modal-header label="IPO Details"></lightning-modal-header>
 
-            </div>
-        </template>
-        </template>
-        <template if:true={resultsClosed}>
-        <template for:each={resultsClosed} for:item="close">
-            <div class="slds-box slds-box_xx-small" key={close.companyName}>
-                <Strong>Company Name:</Strong>{close.companyName}
-            </div>
-        </template>
-
-        </template>
-
+    <lightning-modal-body>
+        <!-- BUTTONS -->
+        <div class="slds-m-bottom_small slds-align_absolute-center">
+            <lightning-button-group>
+                <lightning-button label="Open IPO" onclick={loadOpenIpos}></lightning-button>
+                <lightning-button label="Closed IPO" onclick={loadClosedIpos}></lightning-button>
+                <lightning-button label="Upcoming IPO" onclick={loadUpcomingIpos}></lightning-button>
+            </lightning-button-group>
         </div>
-    </lightning-card>
-    
+
+        <!-- LOADING SPINNER -->
+        <template if:true={isLoading}>
+            <lightning-spinner size="medium" alternative-text="Loading IPOs"></lightning-spinner>
+        </template>
+
+        <!-- IPO TABLE -->
+        <template if:true={ipoData.length}>
+            <div class="slds-m-around_small slds-scrollable_x">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                    <thead>
+                        <tr>
+                            <th>Logo</th>
+                            <th>Symbol</th>
+                            <th>Company</th>
+                            <th>Start time</th>
+                            <th>End Time</th>
+                            <th>Instructions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={ipoData} for:item="ipo">
+                            <tr key={ipo.symbol}>
+                                <td><img src={ipo.logoUrl} style="width:40px;height:40px;" /></td>
+                                <td>{ipo.symbol}</td>
+                                <td>{ipo.companyName}</td>
+                                <td>{ipo.bidStartTimestamp}</td>
+                                <td>{ipo.bidEndTimestamp}</td>
+                                <td>
+                                    <template for:each={ipo.categories} for:item="cat">
+                                        <div key={cat.category}>
+                                            {cat.categoryLabel}: Min ₹ {cat.minPrice}, Max ₹ {cat.maxPrice}, Lot {cat.lotSize}
+                                        </div>
+                                    </template>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+
+       
+    </lightning-modal-body>
+
+    <lightning-modal-footer>
+        <lightning-button label="Close" onclick={handleClose}></lightning-button>
+    </lightning-modal-footer>
 </template>

@@ -1,5 +1,7 @@
 import { LightningElement, track } from 'lwc';
 import getTopMarketData from '@salesforce/apex/StockTopWrapper.getTopMarketData';
+import IpoModal from 'c/ipoUi';
+
 
 export default class StockTopTable extends LightningElement {
     @track marketData;
@@ -11,9 +13,11 @@ export default class StockTopTable extends LightningElement {
         this.fetchMarketData('gainers', 10);
     }
 
-    ipoController(event)
-    {
-        alert('This feature is under construction');
+    async openIpoModal() {
+        await IpoModal.open({
+            size: 'large',
+            description: 'View IPO details'
+        });
     }
 
 
