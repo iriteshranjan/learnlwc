@@ -23,7 +23,7 @@
                     <thead>
                         <tr>
                             <th>Logo</th>
-                            <th>Symbol</th>
+                            <!-- <th>Symbol</th> -->
                             <th>Company</th>
                             <th>Start time</th>
                             <th>End Time</th>
@@ -34,7 +34,7 @@
                         <template for:each={ipoData} for:item="ipo">
                             <tr key={ipo.symbol}>
                                 <td><img src={ipo.logoUrl} style="width:40px;height:40px;" /></td>
-                                <td>{ipo.symbol}</td>
+                               <!-- <td>{ipo.symbol}</td>  -->
                                 <td>{ipo.companyName}</td>
                                 <td>{ipo.bidStartTimestamp}</td>
                                 <td>{ipo.bidEndTimestamp}</td>
