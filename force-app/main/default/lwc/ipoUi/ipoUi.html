@@ -41,7 +41,9 @@
                                 <td>
                                     <template for:each={ipo.categories} for:item="cat">
                                         <div key={cat.category}>
+                                            <div class="slds-box slds-box_xx-small">
                                             {cat.categoryLabel}: Min ₹ {cat.minPrice}, Max ₹ {cat.maxPrice}, Lot {cat.lotSize}
+                                            </div>
                                         </div>
                                     </template>
                                 </td>

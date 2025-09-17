@@ -40,7 +40,7 @@ export default class IpoUi extends LightningModal {
                 let data = JSON.parse(res).ipoList || [];
                 data = data.map(item => ({
                     ...item,
-                    bidStartTimestamp: this.convertUnixToIST(item.listingTimestamp)
+                    bidStartTimestamp: this.convertUnixToIST(item.listingTimestamp),
                     //closingDate: this.convertUnixToIST(item.closingDate)
                 }));
                 this.ipoData = data;
