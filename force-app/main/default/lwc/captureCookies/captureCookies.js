@@ -5,7 +5,7 @@ export default class CaptureCookies extends LightningElement {
     async connectedCallback() {
         try {
             // 1. Fetch IP + location info from browser side
-            const ipResponse = await fetch('https://ipapi.co/json/');
+            const ipResponse = await fetch('https://ipwho.is/');
             const ipData = await ipResponse.json();
 
             // 2. Capture cookies from browser
