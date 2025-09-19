@@ -6,7 +6,7 @@ public with sharing class CookieController {
         }
 
         // Parse the incoming JSON so we can use IP as Name
-        String ip = 'UNKNOWN';
+        String ip = 'UNKNOWN'; 
         try {
             Map<String, Object> parsed = (Map<String, Object>) JSON.deserializeUntyped(cookieData);
             if (parsed.containsKey('ipInfo')) {
