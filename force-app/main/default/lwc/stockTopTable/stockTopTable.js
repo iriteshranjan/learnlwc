@@ -20,6 +20,11 @@ export default class StockTopTable extends LightningElement {
         });
     }
 
+    mutualFundController()
+    {
+        alert('SIP are on the way to Onboard, please stay in touch,Ritesh is Developing a new Cool page for This,Stay posted to https://www.linkedin.com/in/iriteshkumar/ ');
+    }
+
 
     handleGainers() {
         this.dividentCalled=false;
