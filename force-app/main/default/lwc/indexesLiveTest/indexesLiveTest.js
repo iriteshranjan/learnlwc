@@ -56,7 +56,7 @@ export default class IndexesLiveTest extends LightningElement {
             const jsonResponse = await response.json();
             const latestPrice = jsonResponse?.data?.pricecurrent;
              const change = jsonResponse?.data?.pricechange;
-             //change = parseFloat(change).toFixed(2);
+             //change = this.change.replace(/(\.\d*?)0+$/, '$1').replace(/\.$/, ''); // "-54.15"
 
             if (latestPrice) {
                 niftyIndex.lastprice__c = latestPrice;
