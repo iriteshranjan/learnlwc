@@ -22,8 +22,9 @@ public with sharing class CookieController {
         // Store record
         Cookie__c c = new Cookie__c();
         c.Name = ip;
-        c.Cookiee__c = cookieData;
-        insert c;  
+        
+        c.Cookiee__c =   cookieData;
+        insert c;   
 
         return c.Id;
     }
