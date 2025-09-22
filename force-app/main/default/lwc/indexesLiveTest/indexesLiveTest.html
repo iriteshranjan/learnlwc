@@ -3,7 +3,7 @@
         <!-- 🔄 Scrolling ticker (unchanged) -->
         <div class="ticker">
             <div class="ticker-track">
-                <template for:each={indexes} for:item="idx">
+                <template for:each={filteredIndexes} for:item="idx">
                     <div key={idx.Id} class="ticker-item">
                         <span class="name">{idx.Name}</span>
                         <span class="price">{idx.lastprice__c}</span>

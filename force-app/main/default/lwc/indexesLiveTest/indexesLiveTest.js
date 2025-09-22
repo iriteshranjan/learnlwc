@@ -3,6 +3,7 @@ import { LightningElement, track } from 'lwc';
 export default class IndexesLiveTest extends LightningElement {
     @track indexes = [];
     @track nifty50;
+     @track filteredIndexes = [];
     @track sensex;
     refreshInterval;
 
@@ -27,6 +28,8 @@ export default class IndexesLiveTest extends LightningElement {
             const indices = jsonResponse?.list?.indices || [];
 
             const formatted = this.formatData(indices);
+            this.filteredIndexes = formatted.filter(item => !item.Name.toLowerCase().startsWith('bse'));
+
             this.indexes = formatted;
 
             // ✅ Pick Nifty50 and Sensex explicitly
