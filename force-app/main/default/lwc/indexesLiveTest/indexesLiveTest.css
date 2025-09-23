@@ -61,6 +61,10 @@ lightning-card {
     color: #00FF7F;
 }
 
+.ticker {
+    color: #2200ff
+}
+
 .negative {
     color: #FF4500;
 }
@@ -121,7 +125,7 @@ lightning-card {
 .highlight-price {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #00FF7F;
+    color: #077421;
 }
 
 /* ===== Arrow Icon Colors ===== */
