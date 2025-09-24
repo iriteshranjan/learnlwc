@@ -35,6 +35,9 @@ Http http=new Http();
                 if(ss.perChange.equals('-')){
                   ss.perChange='0';  
                 }
+                 if(ss.dividend.equals('-')){
+                  ss.dividend='0';  
+                }
           div.add(new Dividend__c(
             stockName__c=ss.stockName.trim(),
               name=ss.stockName.trim(),
