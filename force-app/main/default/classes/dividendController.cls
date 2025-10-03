@@ -91,7 +91,7 @@ public with sharing class dividendController {
         return [
             SELECT Id, Name, stockName__c, dividend__c, exDate__c, lastValue__c, announcementDate__c
             FROM Dividend__c
-            WHERE exDate__c >= TODAY
+            WHERE exDate__c >= TODAY and dividend__c>0
             ORDER BY exDate__c
         ];
     }
