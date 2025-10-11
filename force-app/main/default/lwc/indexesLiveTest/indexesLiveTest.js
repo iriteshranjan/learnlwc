@@ -14,6 +14,7 @@ export default class IndexesLiveTest extends LightningElement {
 
     disconnectedCallback() {
         clearInterval(this.refreshInterval);
+        //restart
     }
 
     async fetchIndexes() {
