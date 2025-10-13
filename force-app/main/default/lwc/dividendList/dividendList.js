@@ -31,6 +31,7 @@ export default class DividendList extends LightningElement {
     @wire(dividendData)
     wiredDividends({ data, error }) {
         if (data) {
+            
             this.allDividends = data;
             this.totalPages = Math.ceil(this.allDividends.length / this.pageSize);
             console.log('ritesh',this.totalPages);
