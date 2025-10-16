@@ -16,15 +16,14 @@ public with sharing class CookieController {
                 }
             }
         } catch (Exception e) {
-            System.debug('⚠️  Could not parse IP from payload: ' + e.getMessage());
+            System.debug('⚠️ Could not parse IP from payload: ' + e.getMessage());
         }
 
         // Store record
         Cookie__c c = new Cookie__c();
         c.Name = ip;
-        
-        c.Cookiee__c =   cookieData;
-        insert c;   
+        c.Cookiee__c = cookieData;
+        insert c;
 
         return c.Id;
     }
