@@ -4,5 +4,7 @@ global class mutualFundControllerSchedule implements Schedulable,Database.Allows
         delete [select id from mutualFund__c];
         System.enqueueJob(new mutualFundInsertQueueable());
     }
+    
+    //mutualFundInsertQueueable=>mutualFundInsertQueueable=>mutualFundController
 
 }
