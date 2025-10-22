@@ -1,9 +1,9 @@
 public class mutualFundLwc {
     
     @auraEnabled(Cacheable=true)
-    public static List<mutualFund__c> selectmutualFund()
+    public static List<mutualFund__c> selectmutualFund(String fundName)
     {
-        return [Select id,name,direct_scheme_name__c from mutualFund__c];
+        return [Select id,name,direct_scheme_name__c from mutualFund__c where direct_scheme_name__c like :('%' + fundName + '%')  ];
     }
     
     @auraEnabled(Cacheable=true)
