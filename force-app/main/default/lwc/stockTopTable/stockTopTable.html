@@ -13,6 +13,9 @@
                 <!-- <lightning-button label="Close the Tab" onclick={handleClose}></lightning-button> -->
         
         <div>
+        <template if:true={mutualFundCallout}>
+            <c-mutual-fund-search-screen></c-mutual-fund-search-screen>
+        </template>
         <template if:true={dividentCalled}>
             <c-dividend-list></c-dividend-list>
         </template></div>

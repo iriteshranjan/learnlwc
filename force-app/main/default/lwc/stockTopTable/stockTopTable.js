@@ -6,6 +6,7 @@ import IpoModal from 'c/ipoUi';
 export default class StockTopTable extends LightningElement {
     @track marketData;
     dividentCalled=false
+    mutualFundCallout=false;
     marketType = 'gainers'; // default
 
         connectedCallback() {
@@ -22,7 +23,7 @@ export default class StockTopTable extends LightningElement {
 
     mutualFundController()
     {
-        alert('SIP are on the way to Onboard, please stay in touch,Ritesh is Developing a new Cool page for This,Stay posted to https://www.linkedin.com/in/iriteshkumar/ ');
+        this.mutualFundCallout=!this.mutualFundCallout
     }
 
 
