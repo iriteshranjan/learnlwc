@@ -18,7 +18,10 @@ export default class MutualFundSearchScreen extends LightningElement {
             }
            );
                 
-            
+             if(this.searchValue && this.searchValue.length<2)
+             {
+                this.allFunds=[]
+             }
         }
         
        
