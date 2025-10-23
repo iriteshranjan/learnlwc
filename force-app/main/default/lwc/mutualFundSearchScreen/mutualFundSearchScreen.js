@@ -3,7 +3,7 @@ import mutualFundSearch from '@salesforce/apex/mutualFundLwc.selectmutualFund';
 
 export default class MutualFundSearchScreen extends LightningElement {
     @track mutualfundsData
-    searchValue='';
+    @track searchValue='';
     allFunds=[]
  
     searchHandler(event)
