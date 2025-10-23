@@ -1,14 +1,17 @@
 <template>
     <lightning-card title="Mutual Funds">
+         
        <Strong> <h1>This is BETA and UNDERConstruction , Please click on mutual fund button to Revert</h1></Strong>
         <lightning-input type="search" label="type to search" placeholder="Type Mutual fund Name" value={searchValue} onchange={searchHandler}></lightning-input>
         <div class="slds-var-m_around-medium">
            <template for:each={allFunds} for:item=mf>
             <div class="slds-box slds-box_xx-small slds-m-around_x-small clickable" key={mf.Id}>
                     {mf.direct_scheme_name__c}
+                   
             </div>
            </template>
         </div>
     </lightning-card>
+    
     
 </template>
