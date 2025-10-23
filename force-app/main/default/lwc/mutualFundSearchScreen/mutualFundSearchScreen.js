@@ -9,7 +9,7 @@ export default class MutualFundSearchScreen extends LightningElement {
     searchHandler(event)
     {
         this.searchValue=event.target.value;
-        if(this.searchValue && this.searchValue.length>2)
+        if(this.searchValue && this.searchValue.length>0)
         {
            mutualFundSearch({fundName:this.searchValue}).then(
             result=>{
@@ -18,11 +18,12 @@ export default class MutualFundSearchScreen extends LightningElement {
             }
            );
                 
-             if(this.searchValue.length<2)
+             
+        }
+        if(this.searchValue.length==0)
              {
                 this.allFunds=[]
              }
-        }
         
        
 
