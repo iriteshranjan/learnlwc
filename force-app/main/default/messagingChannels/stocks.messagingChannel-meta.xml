@@ -51,5 +51,5 @@ Have a good day :)</response>
     </messagingKeywords>
     <sessionHandlerFlow>stockagentflowroute</sessionHandlerFlow>
     <sessionHandlerQueue>Stockqueue</sessionHandlerQueue>
-    <sessionHandlerType>Flow</sessionHandlerType>
+    <sessionHandlerType>Flow</sessionHandlerType> 
 </MessagingChannel>
