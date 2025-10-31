@@ -25,15 +25,18 @@
                 
             </template>
              
-           <template if:true={selectedTrainId}>
-            <lightning-card>
-          <Strong>{selectedTrainId}</Strong> <br>
-            <Strong>Source Station: </Strong>{start} <br>
-            <Strong>Destination:</Strong> {end}<br>
-            </lightning-card> 
-        </template> 
-           
-           
+                <template if:true={selectedTrainId}>
+                <div class="center-card">
+                    
+                    <div class="slds-p-around_medium slds-text-align_center">
+                        <strong>{selectedTrainId}</strong> <br>
+                        <strong>Source Station:</strong> {start} <br>
+                        <strong>Destination:</strong> {end}
+                    </div>
+                   
+                </div>
+                </template>
+
             <template if:true={error}>
                 <p style="color:red;">{error}</p>
             </template>
