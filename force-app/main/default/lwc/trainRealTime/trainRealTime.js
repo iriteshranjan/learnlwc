@@ -13,6 +13,8 @@ selectedTrainId = ''
         const trainId = event.currentTarget.dataset.id;
         const trainName=event.currentTarget.dataset.name;
         this.selectedTrainId=trainName
+        this.start=event.currentTarget.dataset.src_stn_name
+        this.end=event.currentTarget.dataset.dstn_stn_name
         console.log('Selected Train ID:', trainId);
         this.test=[]
         
@@ -27,14 +29,16 @@ selectedTrainId = ''
     this.trains = null;
         this.error = null;
         try {
-            this.apiUrl=`https://search.railyatri.in/mobile/trainsearch?q=${this.trainNumorStn}`;
+            this.apiUrl=`https://search.railyatri.in/v2/mobile/trainsearch.json?q=${this.trainNumorStn}`;
             const response=await fetch(this.apiUrl,{ method: 'GET' });
             const data = await response.json();
             console.log('Making callout to:', this.apiUrl);
              console.log('Making response to:', response);
-             this.test = data.map(item => ({
-                id: item[0],
-                name: `${item[0]} - ${item[1]}`
+             this.test = data.trains.map(item => ({
+                       id: item.train_number,
+                     name: `${item.train_number} - ${item.train_name}`,
+                     src_stn_name:item.src_stn_name,
+                     dstn_stn_name:item.dstn_stn_name
             }));
 
               //this.test = JSON.stringify(trains, null, 2);
