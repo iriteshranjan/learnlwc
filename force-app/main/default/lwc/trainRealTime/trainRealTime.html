@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Indian Railways Train Tracker">
+        <div class="slds-p-around-medium">
+            {selectedTrainId}
+            <lightning-input 
+                type="text"  
+                label="Enter Train Number or Station"
+                placeholder="e.g., Hatia or 13513"
+                onkeyup={trainHandler}>
+            </lightning-input>
+
+            <template if:true={test}>
+               <ul class="slds-p-top_small slds-border_top">
+              <template for:each={test} for:item="trains">
+              <li  class="slds-box slds-box_xx-small slds-m-vertical_xx-small clickable"
+                data-id={trains.id}
+                data-name={trains.name}
+                onclick={handleSelect}
+                key={trains.id}>{trains.name}</li>
+              </template></ul>
+                
+            </template>
+           
+            <template if:true={error}>
+                <p style="color:red;">{error}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
