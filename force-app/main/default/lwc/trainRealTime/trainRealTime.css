@@ -1,0 +1,13 @@
+.clickable {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.clickable:hover {
+    background-color: hsl(292, 42%, 66%); /* Light grey hover */
+    border-radius: 0.25rem;
+}
+.selected {
+    background-color: #d8edff;
+    border-left: 4px solid #0176d3;
+}

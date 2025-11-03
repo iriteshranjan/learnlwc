@@ -27,13 +27,15 @@
              
                 <template if:true={selectedTrainId}>
                 <div class="center-card">
-                    
+                    <lightning-card>
                     <div class="slds-p-around_medium slds-text-align_center">
                         <strong>{selectedTrainId}</strong> <br>
                         <strong>Source Station:</strong> {start} <br>
                         <strong>Destination:</strong> {end}
+                        
+
                     </div>
-                   
+                    </lightning-card>
                 </div>
                 </template>
 
@@ -42,4 +44,10 @@
             </template>
         </div>
     </lightning-card>
+    
+    <template if:true={trainSelected}>
+    <lightning-card title="Real time Data">
+
+    </lightning-card>
+    </template>
 </template>
