@@ -29,9 +29,9 @@ trainSelectedTest='';
             const format = (d) => d.toISOString().split('T')[0];
 
         this.dateOptions = [
-            { label: `Today (${format(today)})`, value: format(today) },
-            { label: `Yesterday (${format(yesterday)})`, value: format(yesterday) },
-            { label: `Day Before Yesterday (${format(dayBefore)})`, value: format(dayBefore) }
+            { label: `Today (${format(today)})`, value: '1' },
+            { label: `Yesterday (${format(yesterday)})`, value: '2' },
+            { label: `Day Before Yesterday (${format(dayBefore)})`, value:'3' }
         ];
     }
      handleChange(event) {
