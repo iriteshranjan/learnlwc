@@ -33,6 +33,26 @@
                         <strong>Source Station:</strong> {start} <br>
                         <strong>Destination:</strong> {end}
                         
+        <div class="slds-p-around_medium">
+            
+            <lightning-combobox
+                name="dateOptions"
+                label="Choose a Date"
+                value={selectedValue}
+                placeholder="Select an option"
+                options={dateOptions}
+                onchange={handleChange}>
+            </lightning-combobox>
+
+            <template if:true={selectedValue}>
+                <p class="slds-m-top_medium slds-text-heading_small">
+                    Selected Date: <strong>{selectedDate}</strong>
+                </p>
+            </template>
+
+        </div>
+ 
+                        
 
                     </div>
                     </lightning-card>
@@ -47,6 +67,7 @@
     
     <template if:true={trainSelected}>
     <lightning-card title="Real time Data">
+        {trainSelectedTest}
 
     </lightning-card>
     </template>

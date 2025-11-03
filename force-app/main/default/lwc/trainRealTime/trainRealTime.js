@@ -10,6 +10,14 @@ selectedTrainId = ''
 trainSelected=false;
 trainDataApiUrl='';
 selectedDate='';
+trainSelectedTest='';
+@track selectedValue = '';
+    @track selectedDate = '';
+    @track dateOptions = [];
+    dateIndex=1
+
+
+
 
     connectedCallback()
     {
@@ -26,6 +34,10 @@ selectedDate='';
             { label: `Day Before Yesterday (${format(dayBefore)})`, value: format(dayBefore) }
         ];
     }
+     handleChange(event) {
+        this.selectedValue = event.detail.value;
+        this.selectedDate = this.selectedValue;
+    }
     
 
 
@@ -41,7 +53,7 @@ selectedDate='';
         
         if(this.trainSelected)
         {
-             
+             this.trainSelectedTest='check'
         }
         
 
