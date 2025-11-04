@@ -9,12 +9,15 @@ apiUrl='';
 selectedTrainId = ''
 trainSelected=false;
 trainDataApiUrl='';
-selectedDate='';
+//selectedDate='';
 trainSelectedTest='';
 @track selectedValue = '';
     @track selectedDate = '';
     @track dateOptions = [];
     dateIndex=1
+    apiUrl2='';
+    trainFullId='';
+    valueNumber='';
 
 
 
@@ -37,12 +40,16 @@ trainSelectedTest='';
      handleChange(event) {
         this.selectedValue = event.detail.value;
         this.selectedDate = this.selectedValue;
+        this.apiUrl2=`https://livestatus.railyatri.in/api/v3/train_eta_data/${this.trainFullId}/0.json?start_day=${this.selectedDate}` 
+
+
     }
     
 
 
      async handleSelect(event) {
         const trainId = event.currentTarget.dataset.id;
+        this.trainFullId=trainId;
         const trainName=event.currentTarget.dataset.name;
         this.trainSelected=true;
         this.selectedTrainId=trainName
@@ -51,9 +58,14 @@ trainSelectedTest='';
         console.log('Selected Train ID:', trainId);
         this.test=[]
         
-        if(this.trainSelected)
+       // if(this.trainSelected)
         {
-             this.trainSelectedTest='check'
+             //this.trainSelectedTest=this.selectedValue 
+
+             //this.apiUrl2=`https://livestatus.railyatri.in/api/v3/train_eta_data/${trainId}/0.json?start_day=${this.selectedDate}` 
+             //const realResponse= await fetch(this.apiUrl2,{method:'GET'}) ;
+            // const responseData=await realResponse.json();
+             this.trainSelectedTest= apiUrl2;
         }
         
 
