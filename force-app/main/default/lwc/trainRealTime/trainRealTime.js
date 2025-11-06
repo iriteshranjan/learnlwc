@@ -18,6 +18,7 @@ trainSelectedTest='';
     apiUrl2='';
     trainFullId='';
     valueNumber='';
+    responseAPI='';
 
 
 
@@ -44,8 +45,25 @@ trainSelectedTest='';
 
 
     }
-    
 
+    
+   async latestHandler() {
+    if (!this.apiUrl2) {
+        this.error = "Please select a date before refreshing.";
+        return;
+    }
+
+    try {
+        const realResponse = await fetch(this.apiUrl2, { method: "GET" });
+        const responseData = await realResponse.json();
+        console.log('responseData => ', responseData);
+
+        this.responseAPI = JSON.stringify(responseData, null, 2);
+    } catch (error) {
+        this.error = "Error fetching live data";
+        console.error(error);
+    }
+}
 
      async handleSelect(event) {
         const trainId = event.currentTarget.dataset.id;

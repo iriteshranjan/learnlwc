@@ -46,7 +46,11 @@
 
             <template if:true={selectedValue}>
                 <p class="slds-m-top_medium slds-text-heading_small">
-                    Selected Value: <strong>{selectedDate}</strong>
+                    Selected Value: <strong>{selectedDate}</strong></br>
+                    API URL={apiUrl2}
+
+                
+                   
                 </p>
             </template>
 
@@ -56,7 +60,7 @@
 
                     </div>
                     </lightning-card>
-                </div>
+                </div> 
                 </template>
 
             <template if:true={error}>
@@ -67,8 +71,12 @@
     
     <template if:true={trainSelected}>
     <lightning-card title="Real time Data">
-      test  {trainSelectedTest}
+      
+        <lightning-button variant="variant" label="Refresh" title="Refresh" type=submit onclick={latestHandler}></lightning-button>
 
+       <template if:true={apiUrl2} >
+         </template>
+            test  API URL={responseAPI} </br>
     </lightning-card>
     </template>
 </template>
