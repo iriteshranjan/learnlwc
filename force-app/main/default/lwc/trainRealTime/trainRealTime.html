@@ -2,7 +2,6 @@
     <lightning-card title="Indian Railways Train Tracker">
         <div class="slds-p-around-medium">
           
-          
             <lightning-input 
                 type="text"  
                 label="Enter Train Number or Station"
@@ -10,58 +9,58 @@
                 onkeyup={trainHandler}>
             </lightning-input>
 
+            <!-- Train list -->
             <template if:true={test}>
-               <ul class="slds-p-top_small slds-border_top">
-              <template for:each={test} for:item="trains">
-              <li  class="slds-box slds-box_xx-small slds-m-vertical_xx-small clickable"
-                data-id={trains.id}
-                data-name={trains.name}
-                data-src_stn_name={trains.src_stn_name}
-                data-dstn_stn_name={trains.dstn_stn_name}
-
-                onclick={handleSelect}
-                key={trains.id}>{trains.name}</li>
-              </template></ul>
-                
+                <ul class="slds-p-top_small slds-border_top">
+                    <template for:each={test} for:item="trains">
+                        <li  
+                            class="slds-box slds-box_xx-small slds-m-vertical_xx-small clickable"
+                            data-id={trains.id}
+                            data-name={trains.name}
+                            data-src_stn_name={trains.src_stn_name}
+                            data-dstn_stn_name={trains.dstn_stn_name}
+                            onclick={handleSelect}
+                            key={trains.id}>
+                                {trains.name}
+                        </li>
+                    </template>
+                </ul>
             </template>
-             
-                <template if:true={selectedTrainId}>
+
+            <!-- Selected train -->
+            <template if:true={selectedTrainId}>
                 <div class="center-card">
                     <lightning-card>
-                    <div class="slds-p-around_medium slds-text-align_center">
-                        <strong>{selectedTrainId}</strong> <br>
-                        <strong>Source Station:</strong> {start} <br>
-                        <strong>Destination:</strong> {end}
-                        
-        <div class="slds-p-around_medium">
-            
-            <lightning-combobox
-                name="dateOptions"
-                label="Choose a Date"
-                value={selectedValue}
-                placeholder="Select an option"
-                options={dateOptions}
-                onchange={handleChange}>
-            </lightning-combobox>
+                        <div class="slds-p-around_medium slds-text-align_center">
+                            <strong>{selectedTrainId}</strong> <br>
+                            <strong>Source Station:</strong> {start} <br>
+                            <strong>Destination:</strong> {end}
+                            
+                            <!-- Date dropdown -->
+                            <div class="slds-p-around_medium">
 
-            <template if:true={selectedValue}>
-                <p class="slds-m-top_medium slds-text-heading_small">
-                    Selected Value: <strong>{selectedDate}</strong></br>
-                    API URL={apiUrl2}
+                                <lightning-combobox
+                                    name="dateOptions"
+                                    label="Choose a Date"
+                                    value={selectedValue}
+                                    placeholder="Select an option"
+                                    options={dateOptions}
+                                    onchange={handleChange}>
+                                </lightning-combobox>
 
-                
-                   
-                </p>
-            </template>
+                                <template if:true={selectedValue}>
+                                    <p class="slds-m-top_medium slds-text-heading_small">
+                                        <!-- Selected Value: <strong>{selectedDate}</strong><br> -->
+                                        <!-- API URL={apiUrl2} -->
+                                    </p>
+                                </template>
 
-        </div>
- 
-                        
+                            </div>
 
-                    </div>
+                        </div>
                     </lightning-card>
                 </div> 
-                </template>
+            </template>
 
             <template if:true={error}>
                 <p style="color:rgb(88, 19, 19);">{error}</p>
@@ -69,14 +68,68 @@
         </div>
     </lightning-card>
     
+    <!-- Real Time Card -->
     <template if:true={trainSelected}>
-    <lightning-card title="Real time Data">
-      
-        <lightning-button variant="variant" label="Refresh" title="Refresh" type=submit onclick={latestHandler}></lightning-button>
+        <lightning-card title="Real time Data" class="slds-m-top_medium">
+            <lightning-button 
+                variant="brand" 
+                label="Refresh" 
+                title="Refresh" 
+                onclick={latestHandler}>
+            </lightning-button>
 
-       <template if:true={apiUrl2} >
-         </template>
-            test  API URL={responseAPI} </br>
-    </lightning-card>
+            <!-- <br/>API URL:  -->
+
+            <!-- Train Timeline -->
+            <template if:true={stationList}>
+                <template if:true={currentLocation}>
+    <div class="slds-box slds-theme_default slds-m-vertical_small current-box">
+        <strong>Current Location:</strong> {currentLocation} <br/>
+        <small>{currentTimeInfo}</small>
+    </div>
+</template>
+
+<!-- NEXT STATION CARD -->
+<template if:true={nextStation}>
+    <div class="slds-box slds-theme_shade slds-m-vertical_small next-box">
+        <strong>Next Station:</strong> {nextStation} <br/>
+        <small>{nextStationEta}</small>
+    </div>
+</template>
+                <div class="train-path slds-m-top_medium">
+
+                    <template for:each={stationList} for:item="st">
+                        <div key={st.key} class="station-row">
+
+                            <!-- Indicator -->
+                            <div class="indicator">
+                                <div class={st.statusClass}></div>
+                                <div class="line"></div>
+                            </div>
+
+                            <!-- Details -->
+                            <div class="station-details">
+                                <strong>{st.station_name}</strong>
+                                <span>({st.station_code})</span>
+
+                                <template if:true={st.isCurrent}>
+                                    <span class="current-tag">Current</span>
+                                </template>
+
+                                <template if:true={st.delay}>
+                                    <span class="delay">Delay: {st.delay} min</span>
+                                </template>
+
+                                <div class="slds-text-color_weak slds-m-top_x-small">
+                                    STA: {st.sta} | ETA: {st.eta}
+                                </div>
+                            </div>
+
+                        </div>
+                    </template>
+
+                </div>
+            </template>
+        </lightning-card>
     </template>
 </template>
