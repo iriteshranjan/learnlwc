@@ -75,8 +75,7 @@ this.currentLocation = data.current_station_name
     ? data.current_station_name.replace("'", "")
     : 'Not Available';
 
-this.currentTimeInfo = data.bubble_message?.
- 
+this.currentTimeInfo = data.bubble_message?.station_time 
     ? `Last updated ${data.bubble_message.station_time}`
     : '';
 
