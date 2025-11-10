@@ -9,7 +9,7 @@
     <automatedResponses>
         <autoResponseContentType>TextResponse</autoResponseContentType>
         <language>en_US</language>
-        <response>Hello , Agent is Joining, We are setting things UP. 
+        <response>Hello , Agent is Joining, We are setting things up. 
 Have a good day :)</response>
         <type>CustomResponse</type>
     </automatedResponses>
@@ -31,11 +31,11 @@ Have a good day :)</response>
     <messagingChannelType>EmbeddedMessaging</messagingChannelType>
     <messagingKeywords>
         <keyword>cancel</keyword>
-        <keyword>stopall</keyword>
-        <keyword>stop</keyword>
-        <keyword>unsubscribe</keyword>
         <keyword>end</keyword>
         <keyword>quit</keyword>
+        <keyword>stop</keyword>
+        <keyword>stopall</keyword>
+        <keyword>unsubscribe</keyword>
         <keywordType>OptOut</keywordType>
         <language>en_US</language>
     </messagingKeywords>
@@ -51,5 +51,5 @@ Have a good day :)</response>
     </messagingKeywords>
     <sessionHandlerFlow>stockagentflowroute</sessionHandlerFlow>
     <sessionHandlerQueue>Stockqueue</sessionHandlerQueue>
-    <sessionHandlerType>Flow</sessionHandlerType> 
+    <sessionHandlerType>Flow</sessionHandlerType>
 </MessagingChannel>
