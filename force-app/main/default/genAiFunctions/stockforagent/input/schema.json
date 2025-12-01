@@ -1,0 +1,14 @@
+{
+  "required" : [ "stockname" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "stockname" : {
+      "title" : "stockname",
+      "description" : "tahe input from user for the stock name",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

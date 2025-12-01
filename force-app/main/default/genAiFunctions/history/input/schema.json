@@ -1,0 +1,14 @@
+{
+  "required" : [ "stockname" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "stockname" : {
+      "title" : "stockname",
+      "description" : "market history",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

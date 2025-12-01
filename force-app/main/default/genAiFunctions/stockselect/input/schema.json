@@ -1,0 +1,14 @@
+{
+  "required" : [ "Input:userInstructions" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:userInstructions" : {
+      "title" : "userInstructions",
+      "description" : "get stock name and search",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,17 @@
+{
+  "required" : [ "Input:Stock__c" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:Stock__c" : {
+      "title" : "objectToSummarize",
+      "description" : "Please tale past data and answer",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Stock__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

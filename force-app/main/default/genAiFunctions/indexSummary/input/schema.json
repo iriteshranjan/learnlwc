@@ -1,0 +1,17 @@
+{
+  "required" : [ "Input:Indexes__c" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:Indexes__c" : {
+      "title" : "objectToSummarize",
+      "description" : "take index name and find",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Indexes__c"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

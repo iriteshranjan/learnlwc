@@ -1,0 +1,34 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "history" : {
+      "title" : "history",
+      "description" : "market history",
+      "maxItems" : 2000,
+      "items" : {
+        "lightning:type" : "lightning__recordInfoType",
+        "lightning:sObjectInfo" : {
+          "apiName" : "Stock__History"
+        }
+      },
+      "lightning:type" : "lightning__listType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "indexhis" : {
+      "title" : "indexhis",
+      "description" : "market history",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Indexes__History"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,14 @@
+{
+  "required" : [ "Input:userInstructions" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:userInstructions" : {
+      "title" : "userInstructions",
+      "description" : "input collection",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

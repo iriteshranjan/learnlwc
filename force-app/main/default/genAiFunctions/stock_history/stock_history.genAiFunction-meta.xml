@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>The bot to provide old data stats</description>
+    <invocationTarget>stock_history</invocationTarget>
+    <invocationTargetType>generatePromptResponse</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+    <masterLabel>stock history</masterLabel>
+    <progressIndicatorMessage>Past is loading</progressIndicatorMessage>
+</GenAiFunction>

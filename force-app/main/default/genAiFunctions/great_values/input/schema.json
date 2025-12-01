@@ -1,0 +1,13 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "allStocks" : {
+      "title" : "allStocks",
+      "description" : "This agent shows all the potential stocks to buy in list",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
